@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.0.0",
+    "title": "test"
+  },
+  "paths": {
+    "/ESB/BD/FromWMSGP/V1": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "application/xml": {
+                "example": "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<Status>OK</Status>",
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Request": {
+        "type": "object",
+        "properties": {
+          "NS1:DOCNUM": {
+            "type": "object",
+            "properties": {
+              "NS1:DocNumCode": {
+                "type": "string"
+              },
+              "NS1:hdr_DeliveryResponse": {
+                "type": "object",
+                "properties": {
+                  "NS1:ExternalCode": {
+                    "type": "string"
+                  },
+                  "NS1:WarehouseCode": {
+                    "type": "string"
+                  },
+                  "NS1:DeliveryNumber": {
+                    "type": "string"
+                  },
+                  "NS1:DeliveryTypeCode": {
+                    "type": "string"
+                  },
+                  "NS1:DeliverySubType": {
+                    "type": "string"
+                  },
+                  "NS1:OwnerCode": {
+                    "type": "string"
+                  },
+                  "NS1:PartnerCode": {
+                    "type": "string"
+                  },
+                  "NS1:DeliveryStatus": {
+                    "type": "string"
+                  },
+                  "NS1:Operator": {
+                    "type": "string"
+                  },
+                  "NS1:SealNumber": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Response": {
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string",
+            "example": "OK"
+          }
+        }
+      }
+    }
+  }
+}
