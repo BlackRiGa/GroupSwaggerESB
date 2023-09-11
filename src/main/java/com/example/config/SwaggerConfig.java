@@ -40,9 +40,9 @@ public class SwaggerConfig {
                         addResourceLocations("classpath:/config");
                 registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSLead.V1.json").
                         addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSAltV1.json").
+                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSAlt.V1.json").
                         addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSLeadGP.V1.json").
+                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSGP.V1.json").
                         addResourceLocations("classpath:/config");
             }
         };

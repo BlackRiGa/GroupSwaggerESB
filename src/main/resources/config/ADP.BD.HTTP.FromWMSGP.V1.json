@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "0.0.0",
-    "title": "test"
+    "title": "API for ADP.BD.HTTP.FromWMSGP.V1"
   },
   "paths": {
     "/ESB/BD/FromWMSGP/V1": {
