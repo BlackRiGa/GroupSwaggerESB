@@ -1,0 +1,136 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API for ADP.BD.HTTP.DistPortal.V1",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.DistPortal.V1 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/distportal/send": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "application/json": {
+                "example": "
+
+
+                <?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n
+
+
+                <Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Request": {
+        "type": "object",
+        "properties": {
+          "ReportSource": {
+            "type": "string"
+          },
+          "ReportReceiver": {
+            "type": "string"
+          },
+          "ReportID": {
+            "type": "string"
+          },
+          "ReportDate": {
+            "type": "string"
+          },
+          "Message": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "MessageType": {
+                  "type": "string"
+                },
+                "MessageID": {
+                  "type": "string"
+                },
+                "order_id": {
+                  "type": "string"
+                },
+                "order_name": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "number"
+                },
+                "count": {
+                  "type": "number"
+                },
+                "count_accept": {
+                  "type": "number"
+                },
+                "count_shipped": {
+                  "type": "number"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "is_auto_add": {
+                  "type": "number"
+                },
+                "date": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "MessageType",
+                "MessageID",
+                "order_id",
+                "order_name",
+                "code",
+                "count",
+                "count_accept",
+                "count_shipped",
+                "price",
+                "is_auto_add",
+                "date"
+              ]
+            }
+          }
+        },
+        "required": [
+          "ReportSource",
+          "ReportReceiver",
+          "ReportID",
+          "ReportDate",
+          "Message"
+        ]
+      }
+    }
+  }
+}

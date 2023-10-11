@@ -1,0 +1,340 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API for ADP.BD.HTTP.FromLabToErp.V1",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.FromLabToErp.V1 API for swagger LabToErp"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/BD/ErpToLab": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "application/json": {
+                "example": "
+
+                <?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n
+
+                <Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ESB/BD/LabToErp": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "application/json": {
+                "example": "
+
+                <?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n
+
+                <Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Request": {
+        "type": "object",
+        "properties": {
+          "ReportSource": {
+            "type": "string"
+          },
+          "ReportReceiver": {
+            "type": "string"
+          },
+          "ReportID": {
+            "type": "string"
+          },
+          "ReportDate": {
+            "type": "string"
+          },
+          "Message": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "MessageType": {
+                  "type": "string"
+                },
+                "MessageID": {
+                  "type": "string"
+                },
+                "Date": {
+                  "type": "string"
+                },
+                "DeliveryNumber": {
+                  "type": "string"
+                },
+                "DeliveryDate": {
+                  "type": "string"
+                },
+                "ID": {
+                  "type": "string"
+                },
+                "IDMaterial": {
+                  "type": "string"
+                },
+                "Result": {
+                  "type": "string"
+                },
+                "IDMethod": {
+                  "type": "string"
+                },
+                "NumberKU": {
+                  "type": "string"
+                },
+                "QuantityRejected": {
+                  "type": "number"
+                },
+                "Quantity": {
+                  "type": "number"
+                },
+                "MaterialBatchCode": {
+                  "type": "string"
+                },
+                "ProductionDate": {
+                  "type": "string"
+                },
+                "BestBefore": {
+                  "type": "string"
+                },
+                "AddAnalytics": {
+                  "type": "string"
+                },
+                "IDOrganization": {
+                  "type": "string"
+                },
+                "StartDateTrials": {
+                  "type": "string"
+                },
+                "EndDateTrials": {
+                  "type": "string"
+                },
+                "Remark": {
+                  "type": "string"
+                },
+                "ChangeStartTime": {
+                  "type": "string"
+                },
+                "ChangeEndTime": {
+                  "type": "string"
+                },
+                "NameResponsible": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "MessageType",
+                "MessageID",
+                "Date",
+                "DeliveryNumber",
+                "DeliveryDate",
+                "ID",
+                "IDMaterial",
+                "Result",
+                "IDMethod",
+                "NumberKU",
+                "QuantityRejected",
+                "Quantity",
+                "MaterialBatchCode",
+                "ProductionDate",
+                "BestBefore",
+                "AddAnalytics",
+                "IDOrganization",
+                "StartDateTrials",
+                "EndDateTrials",
+                "Remark",
+                "ChangeStartTime",
+                "ChangeEndTime",
+                "NameResponsible"
+              ]
+            }
+          }
+        },
+        "required": [
+          "ReportSource",
+          "ReportReceiver",
+          "ReportID",
+          "ReportDate",
+          "Message"
+        ]
+      },
+      "Request2": {
+        "type": "object",
+        "properties": {
+          "ReportSource": {
+            "type": "string"
+          },
+          "ReportReceiver": {
+            "type": "string"
+          },
+          "ReportID": {
+            "type": "string"
+          },
+          "ReportDate": {
+            "type": "string"
+          },
+          "Message": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "MessageType": {
+                  "type": "string"
+                },
+                "MessageID": {
+                  "type": "string"
+                },
+                "Date": {
+                  "type": "string"
+                },
+                "DeliveryNumber": {
+                  "type": "string"
+                },
+                "DeliveryDate": {
+                  "type": "string"
+                },
+                "ID": {
+                  "type": "string"
+                },
+                "IDMaterial": {
+                  "type": "string"
+                },
+                "Result": {
+                  "type": "string"
+                },
+                "IDMethod": {
+                  "type": "string"
+                },
+                "NumberKU": {
+                  "type": "string"
+                },
+                "QuantityRejected": {
+                  "type": "number"
+                },
+                "Quantity": {
+                  "type": "number"
+                },
+                "MaterialBatchCode": {
+                  "type": "string"
+                },
+                "ProductionDate": {
+                  "type": "string"
+                },
+                "BestBefore": {
+                  "type": "string"
+                },
+                "AddAnalytics": {
+                  "type": "string"
+                },
+                "IDOrganization": {
+                  "type": "string"
+                },
+                "StartDateTrials": {
+                  "type": "string"
+                },
+                "EndDateTrials": {
+                  "type": "string"
+                },
+                "Remark": {
+                  "type": "string"
+                },
+                "ChangeStartTime": {
+                  "type": "string"
+                },
+                "ChangeEndTime": {
+                  "type": "string"
+                },
+                "NameResponsible": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "MessageType",
+                "MessageID",
+                "Date",
+                "DeliveryNumber",
+                "DeliveryDate",
+                "ID",
+                "IDMaterial",
+                "Result",
+                "IDMethod",
+                "NumberKU",
+                "QuantityRejected",
+                "Quantity",
+                "MaterialBatchCode",
+                "ProductionDate",
+                "BestBefore",
+                "AddAnalytics",
+                "IDOrganization",
+                "StartDateTrials",
+                "EndDateTrials",
+                "Remark",
+                "ChangeStartTime",
+                "ChangeEndTime",
+                "NameResponsible"
+              ]
+            }
+          }
+        },
+        "required": [
+          "ReportSource",
+          "ReportReceiver",
+          "ReportID",
+          "ReportDate",
+          "Message"
+        ]
+      }
+    }
+  }
+}

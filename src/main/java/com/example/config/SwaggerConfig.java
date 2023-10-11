@@ -10,9 +10,12 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 @Configuration
 @EnableSwagger2
@@ -28,22 +31,20 @@ public class SwaggerConfig {
                 .build();
     }
 
-
     @Bean
-    WebMvcConfigurer configurer () {
-        return new WebMvcConfigurerAdapter() {
+    public WebMvcConfigurer configurer() {
+        return new WebMvcConfigurer() {
             @Override
-            public void addResourceHandlers (ResourceHandlerRegistry registry) {
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSLeadBD.V1.json").
-                        addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSEvd.V1.json").
-                        addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSLead.V1.json").
-                        addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSAlt.V1.json").
-                        addResourceLocations("classpath:/config");
-                registry.addResourceHandler("/config/ADP.BD.HTTP.FromWMSGP.V1.json").
-                        addResourceLocations("classpath:/config");
+            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                try {
+                    List<String> configLocations = Files.readAllLines(Paths.get("src/main/resources/listAdapters.txt"));
+                    for (String location : configLocations) {
+                        registry.addResourceHandler("/config/" + location + ".json")
+                                .addResourceLocations("classpath:/config");
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException("Failed to read config locations.", e);
+                }
             }
         };
     }

@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.AddAccToWss API",
+    "version": "1.0.0",
+    "description": "API for ADP.BD.HTTP.AddAccToWss"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/AddAccToWSS/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AfkToUTBDRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "application/xml": {
+                "example": "
+                <?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n
+                <Status>OK</Status>"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AfkToUTBDRequest": {
+        "type": "object",
+        "properties": {
+          "ReportSource": {
+            "type": "string"
+          },
+          "ReportReceiver": {
+            "type": "string"
+          },
+          "ReportID": {
+            "type": "string"
+          },
+          "ReportDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "StringConnect": {
+            "type": "string"
+          },
+          "Message": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "MessageType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "MessageType"
+              ]
+            }
+          }
+        },
+        "required": [
+          "ReportSource",
+          "ReportReceiver",
+          "ReportID",
+          "ReportDate",
+          "StringConnect",
+          "Message"
+        ]
+      }
+    }
+  }
+}

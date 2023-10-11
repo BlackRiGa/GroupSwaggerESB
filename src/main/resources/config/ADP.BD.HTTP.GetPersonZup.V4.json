@@ -1,0 +1,115 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.GetPersonZup.V4",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.GetPersonZup.V4 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ZupToBuh/GetPersonZUP/4": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example1": {
+                  "value": {
+                    "ReportSource": "LiskiHbZup",
+                    "ReportReceiver": "LiskiHbBuh",
+                    "ReportID": "35f60246-28dd-4ecf-a312-ebf57fa925ee",
+                    "ReportDate": "2023-09-13T08:10:33",
+                    "Message": [
+                      {
+                        "MessageType": "hdr_Person",
+                        "MessageID": "bb367641-f0ea-4fad-9f8f-023b059537b0",
+                        "PersonID": "db0a7160-5135-11ee-80c9-005056b29be8",
+                        "Birthday": "1996-08-31T00:00:00",
+                        "Sex": 0,
+                        "INN": "365205214802",
+                        "PFR": "153-277-074 62",
+                        "BirthPlace": "0,Лиски,,Воронежская обл.,",
+                        "RegistrationDate": "2009-09-02T00:00:00",
+                        "CrimeanRegistration": false,
+                        "Surname": "Федоров",
+                        "FirstName": "Сергей",
+                        "MiddleName": "Сергеевич"
+                      },
+                      {
+                        "MessageType": "tbl_Contacts",
+                        "MessageID": "ec105620-ab80-4d4c-8f71-6789eec78a19",
+                        "PersonID": "db0a7160-5135-11ee-80c9-005056b29be8",
+                        "ContactKind": "",
+                        "Presentation": ""
+                      },
+                      {
+                        "MessageType": "tbl_Initials",
+                        "MessageID": "d9f28f33-4d57-44f6-8f61-a5e50ce501f4",
+                        "PersonID": "db0a7160-5135-11ee-80c9-005056b29be8",
+                        "Date": "1899-12-31T00:00:00",
+                        "Surname": "",
+                        "FirstName": "",
+                        "MiddleName": ""
+                      },
+                      {
+                        "MessageType": "tbl_Nationality",
+                        "MessageID": "07d660f9-4b49-4c9f-9e66-0d8ebdba6808",
+                        "PersonID": "db0a7160-5135-11ee-80c9-005056b29be8",
+                        "Date": "1899-12-31T00:00:00",
+                        "Country": ""
+                      },
+                      {
+                        "MessageType": "tbl_Passport",
+                        "MessageID": "db9b520d-9cd2-4ce0-b7a8-71f524ad5463",
+                        "PersonID": "db0a7160-5135-11ee-80c9-005056b29be8",
+                        "Date": "2016-09-08T00:00:00",
+                        "DocType": "",
+                        "Series": "20 17",
+                        "Number": "005152",
+                        "IssueDate": "2016-09-08T00:00:00",
+                        "IssuedBy": "",
+                        "DepCode": "360-022",
+                        "IdentityDoc": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Resource created successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

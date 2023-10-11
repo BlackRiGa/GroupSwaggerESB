@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.GetSemBuhData.V1",
+    "version": "1.0.0",
+    "description": "API для ADP.BD.HTTP.GetSemBuhData.V1"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Тестовый сервер"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Продакшн сервер"
+    }
+  ],
+  "paths": {
+    "/ESB/SEMBUH/GET/ExecProcJSON/VedomostTTN/2": {
+      "post": {
+        "summary": "Создание входного пакета",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomingPackage"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Входной пакет создан"
+          },
+          "400": {
+            "description": "Неверный запрос"
+          }
+        }
+      }
+    },
+    "/ESB/SEMBUH/GET/ExecProcJSON/RegionClientBase/1": {
+      "post": {
+        "summary": "Создание региональной клиентской базы",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegionClientBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Региональная клиентская база создана"
+          },
+          "400": {
+            "description": "Неверный запрос"
+          }
+        }
+      }
+    },
+    "/ESB/SEMBUH/GET/ExecProcJSON/Pokazateli/2": {
+      "post": {
+        "summary": "Создание показателя",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pokazateli"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Показатель создан"
+          },
+          "400": {
+            "description": "Неверный запрос"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IncomingPackage": {
+        "type": "object",
+        "properties": {
+          "OrgCodeMDM": {
+            "type": "string"
+          },
+          "DateStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "DateEnd": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "OrgCodeMDM",
+          "DateStart",
+          "DateEnd"
+        ]
+      },
+      "RegionClientBase": {
+        "type": "object",
+        "properties": {
+          "OrgCodeMDM": {
+            "type": "string"
+          },
+          "Region": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Pometka": {
+                  "type": "boolean"
+                },
+                "Roditel": {
+                  "type": "string"
+                },
+                "Gruppa": {
+                  "type": "boolean"
+                },
+                "Kod": {
+                  "type": "string"
+                },
+                "Name": {
+                  "type": "string"
+                },
+                "KodRegion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Pometka",
+                "Roditel",
+                "Gruppa",
+                "Kod",
+                "Name",
+                "KodRegion"
+              ]
+            }
+          }
+        },
+        "required": [
+          "OrgCodeMDM",
+          "Region"
+        ]
+      },
+      "Pokazateli": {
+        "type": "object",
+        "properties": {
+          "StrPokazateli": {
+            "type": "string"
+          },
+          "Наименование": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "StrPokazateli",
+          "Наименование"
+        ]
+      }
+    }
+  }
+}

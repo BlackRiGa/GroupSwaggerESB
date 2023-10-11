@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "ADP.BD.HTTP.FromWMSGP.V1",
+    "title": "ADP.BD.HTTP.BuhToLblBuh",
     "version": "1.0.0",
-    "description": "ADP.BD.HTTP.FromWMSGP.V1 API for swagger"
+    "description": "ADP.BD.HTTP.BuhToLblBuh API for swagger"
   },
   "servers": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/ESB/BD/FromWMSGP/V1": {
+    "/ESB/BD/BuhToLblBuh/ReestrTTN/1": {
       "post": {
         "summary": "Create a resource",
         "requestBody": {
@@ -34,7 +34,7 @@
               },
               "examples": {
                 "example1": {
-                  "value": "<DOCNUM>\n    <DocNumCode>string</DocNumCode>\n    <hdr_DeliveryResponse>\n        <ExternalCode>string</ExternalCode>\n        <WarehouseCode>string</WarehouseCode>\n        <DeliveryNumber>string</DeliveryNumber>\n        <DeliveryTypeCode>string</DeliveryTypeCode>\n        <DeliverySubType>string</DeliverySubType>\n        <OwnerCode>string</OwnerCode>\n        <PartnerCode>string</PartnerCode>\n        <DeliveryStatus>string</DeliveryStatus>\n        <Operator>string</Operator>\n        <SealNumber>string</SealNumber>\n    </hdr_DeliveryResponse>\n</DOCNUM>"
+                  "value": "<Parms>{\"OrgCodeMDM\":\"31821\",\"DateStart\":\"2023-09-16T00:00:00\",\"DateEnd\":\"2023-09-17T23:59:59\"}</Parms>"
                 }
               }
             }
@@ -45,7 +45,9 @@
             "description": "Resource created",
             "content": {
               "application/json": {
-                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n  <Status>OK</Status>"
+                "example": {
+                  "message": "Resource created successfully"
+                }
               }
             }
           },

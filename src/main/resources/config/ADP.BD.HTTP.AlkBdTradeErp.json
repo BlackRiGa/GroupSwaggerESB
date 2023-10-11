@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API for ADP.BD.HTTP.AlkBdTradeErp",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.AlkBdTradeErp API for address ErpToAlkBdTrade. AlkBdTradeToErp is not used for the address"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/BD/ErpToAlkBdTrade": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "application/json": {
+                "example": "
+                <?xml version=\\\"1.0\\\" encoding=\\\"UT-8\\\"?>\\n
+                <Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Request": {
+        "type": "object",
+        "properties": {
+          "ObjectType": {
+            "type": "string"
+          },
+          "Version": {
+            "type": "integer"
+          },
+          "Smena": {
+            "type": "integer"
+          },
+          "UserName": {
+            "type": "string"
+          },
+          "DateRequest": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "ObjectType",
+          "Version",
+          "Smena",
+          "UserName",
+          "DateRequest"
+        ]
+      }
+    }
+  }
+}
