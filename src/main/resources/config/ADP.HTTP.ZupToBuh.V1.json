@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.ZupToBuh.V1",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.ZupToBuh.V1 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ZupToBuh/V1": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request payload",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string"
+                        },
+                        "PersonID": {
+                          "type": "string"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "Surname": {
+                          "type": "string"
+                        },
+                        "FirstName": {
+                          "type": "string"
+                        },
+                        "MiddleName": {
+                          "type": "string"
+                        },
+                        "Birthday": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "Sex": {
+                          "type": "integer"
+                        },
+                        "INN": {
+                          "type": "string"
+                        },
+                        "PFR": {
+                          "type": "string"
+                        },
+                        "BirthPlace": {
+                          "type": "string"
+                        },
+                        "CrimeanRegistration": {
+                          "type": "boolean"
+                        },
+                        "ContactKind": {
+                          "type": "string"
+                        },
+                        "Presentation": {
+                          "type": "string"
+                        },
+                        "Country": {
+                          "type": "string"
+                        },
+                        "DocType": {
+                          "type": "string"
+                        },
+                        "Series": {
+                          "type": "string"
+                        },
+                        "Number": {
+                          "type": "string"
+                        },
+                        "IssueDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "Validity": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "IssuedBy": {
+                          "type": "string"
+                        },
+                        "DepCode": {
+                          "type": "string"
+                        },
+                        "IdentityDoc": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "PersonID"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ReportSource\": \"AlkEAZup_test_1\",\n    \"ReportReceiver\": \"ALKEABUH\",\n    \"ReportID\": \"a2c1b149-f9df-4237-b57b-a7c098f98763\",\n    \"ReportDate\": \"2023-10-05T16:50:47\",\n    \"Message\": [\n        {\n            \"MessageType\": \"hdr_Person\",\n            \"MessageID\": \"6418d435-d0b8-4091-8131-1b836838137d\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"Birthday\": \"2000-01-01T00:00:00\",\n            \"Sex\": 0,\n            \"INN\": \"\",\n            \"PFR\": \"\",\n            \"BirthPlace\": \"0,,,,\",\n            \"CrimeanRegistration\": false,\n            \"Surname\":\"test\",\n            \"FirstName\":\"test\",\n            \"MiddleName\":\"test\"\n        },\n        {\n            \"MessageType\": \"tbl_Contacts\",\n            \"MessageID\": \"c81585b9-aaee-4a37-b216-5d86d11e9b66\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"ContactKind\": \"Email\",\n            \"Presentation\":\"test\"\n        },\n        {\n            \"MessageType\": \"tbl_Contacts\",\n            \"MessageID\": \"e4ff3935-2cd5-4125-b759-9b574e8447eb\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"ContactKind\":\"test\",\n            \"Presentation\":\"test\"\n        },\n        {\n            \"MessageType\": \"tbl_Contacts\",\n            \"MessageID\": \"91b500c2-0844-4cba-a92b-cfd7ef07aa10\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"ContactKind\":\"test\",\n            \"Presentation\":\"test\"\n        },\n        {\n            \"MessageType\": \"tbl_Initials\",\n            \"MessageID\": \"2ac860f5-87af-442f-927d-fba744554537\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"Date\": \"1899-12-31T00:00:00\",\n            \"Surname\":\"test\",\n            \"FirstName\":\"test\",\n            \"MiddleName\":\"test\"\n        },\n        {\n            \"MessageType\": \"tbl_Nationality\",\n            \"MessageID\": \"63c79a0b-3e5c-46c6-bdb7-070394fea151\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"Date\": \"1899-12-31T00:00:00\",\n            \"Country\":\"testF\"\n        },\n        {\n            \"MessageType\": \"tbl_Passport\",\n            \"MessageID\": \"a4c2e83a-e5bb-4e58-9e08-2d6a127529db\",\n            \"PersonID\": \"dd8be5a9-636f-11ee-8221-c025e90f1e6a\",\n            \"Date\": \"2000-01-01T00:00:00\",\n            \"DocType\":\"test\",\n            \"Series\": \"1234\",\n            \"Number\": \"1111111\",\n            \"IssueDate\": \"2000-01-01T00:00:00\",\n            \"Validity\": \"2050-01-01T00:00:00\",\n            \"IssuedBy\": \"\",\n            \"DepCode\": \"360-006\",\n            \"IdentityDoc\": true\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">OK</m:return></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

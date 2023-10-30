@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.ERequestsToWSSd",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.ERequestsToWSSd API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ERequestsToWSSd/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "MessageType": {
+                    "type": "string"
+                  },
+                  "MessageID": {
+                    "type": "string"
+                  },
+                  "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ProcessSettingName": {
+                    "type": "string"
+                  },
+                  "ListID": {
+                    "type": "integer"
+                  },
+                  "Method": {
+                    "type": "string"
+                  },
+                  "ProcessUserName": {
+                    "type": "string"
+                  },
+                  "ItemFields": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "FieldName": {
+                          "type": "string"
+                        },
+                        "FieldStringValue": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "integer"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "FieldName",
+                        "FieldStringValue"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "MessageType",
+                  "MessageID",
+                  "Date",
+                  "ProcessSettingName",
+                  "ListID",
+                  "Method",
+                  "ProcessUserName",
+                  "ItemFields"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"MessageType\": \"ERequests\",\n    \"MessageID\": \"5e819c14-fb98-11ed-94fb-fa163e986fe3\",\n    \"Date\": \"2023-08-01T14:17:02\",\n    \"ProcessSettingName\": \"ERequests\",\n    \"ListID\": 130,\n    \"Method\": \"UpdateObject\",\n    \"ProcessUserName\": \"efko.ru/ustech_wss_zak\",\n    \"ItemFields\": [\n        {\n            \"FieldName\": \"Содержание\",\n            \"FieldStringValue\": \"Счет на приобретение кодов MDM: 36055\"\n        },\n        {\n            \"FieldName\": \"Вид служебной записки\",\n            \"FieldStringValue\": 67\n        },\n        {\n            \"FieldName\": \"Элемент содержанен полэзователем\",\n            \"FieldStringValue\": true\n        },\n        {\n            \"FieldName\": \"Система-источник\",\n            \"FieldStringValue\": \"1\"\n        },\n        {\n            \"FieldName\": \"Организация\",\n            \"FieldStringValue\": \"198\"\n        },\n        {\n            \"FieldName\": \"ID_WSSD\",\n            \"FieldStringValue\": \"264\"\n        },\n        {\n            \"FieldName\": \"Инициатор\",\n            \"FieldStringValue\": \"efko.ru/m.rudenskaya\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<Resp><status>true</status><listID>130</listID><inCode></inCode><outCode>2949740</outCode><message></message><outCode>2949740</outCode></Resp>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ERequestsToWSSd/getStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {},
+              "examples": {
+                "example1": {
+                  "value": "No info in logs in ELK. May not be used, but there is a checkpoint. Typical example in /ContractsToWSS/getStatus"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "No info in logs in ELK. May not be used, but there is a checkpoint. Typical example in /ContractsToWSS/getStatus"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ERequestsToWSSd/chngStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "ProcessUserName": {
+                          "type": "string"
+                        },
+                        "ListID": {
+                          "type": "integer"
+                        },
+                        "SourceSystem": {
+                          "type": "string"
+                        },
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "ProcessSettingName": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string"
+                        },
+                        "Method": {
+                          "type": "string"
+                        },
+                        "ID_WSSD": {
+                          "type": "integer"
+                        },
+                        "Решение": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "Date",
+                        "ProcessUserName",
+                        "ListID",
+                        "SourceSystem",
+                        "MessageType",
+                        "ProcessSettingName",
+                        "MessageID",
+                        "Method",
+                        "ID_WSSD",
+                        "Решение"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n  \"ReportSource\": \"ISUI\",\n  \"ReportReceiver\": \"WSSD\",\n  \"ReportID\": \"ChangeDocumentSolution\",\n  \"ReportDate\": \"2023-10-25T13:05:02\",\n  \"StringConnect\": \"helpdesk.efko.ru\",\n  \"Message\": [\n    {\n      \"Date\": \"2023-10-25T13:05:02\",\n      \"ProcessUserName\": \"tech_wss_ere\",\n      \"ListID\": 130,\n      \"SourceSystem\": \"11\",\n      \"MessageType\": \"Erequests\",\n      \"ProcessSettingName\": \"Erequests\",\n      \"MessageID\": \"IT883249\",\n      \"Method\": \"AcceptDocumentSolution\",\n      \"ID_WSSD\": 2944208,\n      \"Решение\": \"Отправить на согласование ЭСЗ\"\n    }\n  ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><AcceptDocumentSolutionResponse xmlns=\"http://tempuri.org/\"><AcceptDocumentSolutionResult><OperationResult>true</OperationResult></AcceptDocumentSolutionResult></AcceptDocumentSolutionResponse></soap:Body></soap:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.KM.HTTP.TKPNPL",
+    "version": "1.0.0",
+    "description": "ADP.KM.HTTP.TKPNPL API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/KM/TkpToNpl": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "DeliveryNumber": {
+                          "type": "string"
+                        },
+                        "DeliveryDate": {
+                          "type": "string"
+                        },
+                        "ID": {
+                          "type": "string"
+                        },
+                        "IDOrganization": {
+                          "type": "string"
+                        },
+                        "IDSubdivision": {
+                          "type": "string"
+                        },
+                        "IDMaterial": {
+                          "type": "string"
+                        },
+                        "NameMaterial": {
+                          "type": "string"
+                        },
+                        "nalysisRules": {
+                          "type": "string"
+                        },
+                        "AddInfo": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "DeliveryNumber",
+                        "DeliveryDate",
+                        "ID",
+                        "IDOrganization",
+                        "IDSubdivision",
+                        "IDMaterial",
+                        "NameMaterial",
+                        "nalysisRules",
+                        "AddInfo"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportSource\":\"ErpKM\",\"ReportReceiver\":\"KMNpl\",\"ReportID\":\"5462053a-1711-4f8d-aef3-c33e51b53540\",\"ReportDate\":\"2023-10-10T11:40:32\",\"StringConnect\":\"Srvr=\\\"AlkKubMasERP\\\";Ref=\\\"alkkubmaserp\\\";\",\"Message\":[{\"MessageType\":\"OrderRequest\",\"MessageID\":\"8880369b-6748-11ee-aa3a-005056b2ce16\",\"Date\":\"2023-10-10T11:39:33\",\"DeliveryNumber\":\"test\",\"DeliveryDate\":\"10.10.2023 11:39:31\",\"ID\":\"8880369b-6748-11ee-aa3a-005056b2ce16\",\"IDOrganization\":\"deb3b3f5-5446-11ec-aa31-005056b2ce16\",\"IDSubdivision\":\"ab35226b-8299-11ec-aa34-005056b2ce16\",\"IDMaterial\":\"56ddca6f-c8f2-11e2-be53-001e671023c8\",\"NameMaterial\":\"test\",\"nalysisRules\":\"test\",\"AddInfo\":\"B821XT126\"}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ESB/KM/NplToTkp": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "DeliveryNumber": {
+                          "type": "string"
+                        },
+                        "DeliveryDate": {
+                          "type": "string"
+                        },
+                        "ID": {
+                          "type": "string"
+                        },
+                        "IDMaterial": {
+                          "type": "string"
+                        },
+                        "Result": {
+                          "type": "string"
+                        },
+                        "IDMethod": {
+                          "type": "string"
+                        },
+                        "NumberKU": {
+                          "type": "string"
+                        },
+                        "AddAnalytics": {
+                          "type": "string"
+                        },
+                        "IDOrganization": {
+                          "type": "string"
+                        },
+                        "IDSubdivision": {
+                          "type": "string"
+                        },
+                        "StartDateTrials": {
+                          "type": "string"
+                        },
+                        "EndDateTrials": {
+                          "type": "string"
+                        },
+                        "Remark": {
+                          "type": "string"
+                        },
+                        "Change": {
+                          "type": "string"
+                        },
+                        "ChangeStartTime": {
+                          "type": "string"
+                        },
+                        "ChangeEndTime": {
+                          "type": "string"
+                        },
+                        "NameResponsible": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "DeliveryNumber",
+                        "DeliveryDate",
+                        "ID",
+                        "IDMaterial",
+                        "Result",
+                        "IDMethod",
+                        "NumberKU",
+                        "AddAnalytics",
+                        "IDOrganization",
+                        "IDSubdivision",
+                        "StartDateTrials",
+                        "EndDateTrials",
+                        "Remark",
+                        "Change",
+                        "ChangeStartTime",
+                        "ChangeEndTime",
+                        "NameResponsible"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportSource\":\"TKPPNpl\",\"ReportReceiver\":\"ErpTKPP\",\"ReportID\":\"2131c7c1-325a-4182-93ac-880b072a78d8\",\"ReportDate\":\"2023-10-10T10:44:55\",\"Message\":[{\"MessageType\":\"hdr_OrderResponse\",\"MessageID\":\"60bfe24f-65e1-11ee-aa51-00505695b60d\",\"Date\":\"2023-10-10T10:44:54\",\"DeliveryNumber\":\"000000229\",\"DeliveryDate\":\"08.10.2023 16:49:39\",\"ID\":\"60bfe24f-65e1-11ee-aa51-00505695b60d\",\"IDMaterial\":\"327703fa-20cf-11ee-813a-005056b2ee34\",\"Result\":\"7ab0396e-7550-11ed-80cc-005056b2f50f\",\"IDMethod\":\"e7809f77-c6f4-11ed-80ce-005056b2f50f\",\"NumberKU\":\"\",\"AddAnalytics\":\"8d703659-3a7e-11ee-aa50-00505695b60d\",\"IDOrganization\":\"2c8f37b6-fbe3-11ea-80f5-000c2924bd9f\",\"IDSubdivision\":\"b3a5e821-57fe-11ec-80df-005056b2ee34\",\"StartDateTrials\":\"20231010104130\",\"EndDateTrials\":\"20231010104443\",\"Remark\":\"test\",\"Change\":\"Change2\",\"ChangeStartTime\":\"00010101080000\",\"ChangeEndTime\":\"00010101200000\",\"NameResponsible\":\"test\"}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

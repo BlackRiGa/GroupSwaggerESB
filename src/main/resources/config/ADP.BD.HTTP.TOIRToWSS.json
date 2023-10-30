@@ -1,0 +1,260 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.TOIRToWSS",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.TOIRToWSS API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/TOIRToWSS/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string",
+                    "description": "Source of the report",
+                    "example": "TOIR"
+                  },
+                  "ReportReceiver": {
+                    "type": "string",
+                    "description": "Receiver of the report"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "description": "ID of the report"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date of the report"
+                  },
+                  "x_debag_key": {
+                    "type": "string",
+                    "description": "Debug key"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string",
+                          "description": "Type of the message"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "description": "ID of the message"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "Date of the message"
+                        },
+                        "ListID": {
+                          "type": "integer",
+                          "description": "List ID"
+                        },
+                        "ItemFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "FieldName": {
+                                "type": "string",
+                                "description": "Field name"
+                              },
+                              "FieldStringValue": {
+                                "type": "string",
+                                "description": "Field string value"
+                              }
+                            }
+                          },
+                          "description": "Item fields"
+                        },
+                        "ItemFileField": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "FieldName": {
+                                "type": "string",
+                                "description": "Field name"
+                              },
+                              "Files": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "FileName": {
+                                      "type": "string",
+                                      "description": "File name"
+                                    },
+                                    "FileContent": {
+                                      "type": "string",
+                                      "description": "File content"
+                                    }
+                                  }
+                                },
+                                "description": "Files"
+                              }
+                            }
+                          },
+                          "description": "Item file field"
+                        },
+                        "ItemField": {
+                          "type": "object",
+                          "properties": {
+                            "Blocks": {
+                              "type": "object",
+                              "properties": {
+                                "ProcessBlock": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "IsParallel": {
+                                        "type": "boolean",
+                                        "description": "Is parallel"
+                                      },
+                                      "OrderID": {
+                                        "type": "integer",
+                                        "description": "Order ID"
+                                      },
+                                      "BlockName": {
+                                        "type": "string",
+                                        "description": "Block name"
+                                      },
+                                      "Users": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "ProcessUser": {
+                                              "type": "object",
+                                              "properties": {
+                                                "UserLogin": {
+                                                  "type": "string",
+                                                  "description": "User login"
+                                                },
+                                                "OrderID": {
+                                                  "type": "integer",
+                                                  "description": "Order ID"
+                                                },
+                                                "AccessDeletedUser": {
+                                                  "type": "boolean",
+                                                  "description": "Access deleted user"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "description": "Users"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ReportSource\": \"TOIR\",\n    \"ReportReceiver\": \"Unloading_WSSD\",\n    \"ReportID\": \"f462c6b4-3a49-4a10-bab6-04cc521d21fb\",\n    \"ReportDate\": \"2023-09-30T13:42:01\",\n    \"x_debag_key\": \"049fc04511c95702a410826ae7e72fc0\",\n    \"Message\": [\n        {\n            \"MessageType\": \"SoglPF\",\n            \"MessageID\": \"ddb84d92-5f7d-11ee-80ca-005056b25f0f\",\n            \"Date\": \"2023-09-30T13:41:14\",\n            \"ListID\": 373,\n            \"ItemFields\": [\n                {\n                    \"FieldName\":\"test\",\n                    \"FieldStringValue\": \"ddb84d92-5f7d-11ee-80ca-005056b25f0f\"\n                }\n            ],\n            \"ItemFileField\": [\n                {\n                    \"FieldName\":\"test\",\n                    \"Files\": [\n                        {\n                            \"FileName\":\"test\",\n                            \"FileContent\": \"test\"\n                        }\n                    ]\n                }\n            ],\n            \"ItemField\": {\n                \"Blocks\": {\n                    \"ProcessBlock\": [\n                        {\n                            \"IsParallel\": false,\n                            \"OrderID\": 2,\n                            \"BlockName\":\"test\",\n                            \"Users\": [\n                                {\n                                    \"ProcessUser\": {\n                                        \"UserLogin\": \"efko.ru\\\\a.akimov\",\n                                        \"OrderID\": 1,\n                                        \"AccessDeletedUser\": false\n                                    }\n                                },\n                                {\n                                    \"ProcessUser\": {\n                                        \"UserLogin\": \"efko.ru\\\\d.golushko\",\n                                        \"OrderID\": 1,\n                                        \"AccessDeletedUser\": false\n                                    }\n                                }\n                            ]\n                        }\n                    ]\n                }\n            }\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><CreateObjectResponse xmlns=\"http://tempuri.org/\"><CreateObjectResult><OperationResult>true</OperationResult><CreatedItemId>124780</CreatedItemId></CreateObjectResult></CreateObjectResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/TOIRToWSS/getStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "DocNum": {
+                    "type": "string",
+                    "description": "Document number"
+                  }
+                }
+              },
+              "examples": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/TOIRToWSS/chngStatus": {
+      "post": {
+        "summary": "Get a resource",
+        "responses": {
+          "200": {
+            "description": "Resource returned",
+            "content": {
+              "text": {
+                "example": "No information in logs"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

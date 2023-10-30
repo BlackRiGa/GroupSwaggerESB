@@ -1,0 +1,331 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.ToirToAlkCorBuh",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.ToirToAlkCorBuh API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/BD/AlkCorBuhToToir": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string",
+                    "description": "Source of the report",
+                    "example": "AlkCorBuh"
+                  },
+                  "ReportReceiver": {
+                    "type": "string",
+                    "description": "Receiver of the report"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "description": "ID of the report"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date of the report"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string",
+                          "description": "Type of the message"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "description": "ID of the message"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "Date of the message"
+                        },
+                        "ExternalCode": {
+                          "type": "string",
+                          "description": "External code"
+                        },
+                        "Goods_data": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ExternalCode_str": {
+                                "type": "string",
+                                "description": "External code"
+                              },
+                              "MaterialMDM": {
+                                "type": "integer",
+                                "description": "Material MDM"
+                              },
+                              "Unit_code": {
+                                "type": "string",
+                                "description": "Unit code"
+                              },
+                              "Quantity": {
+                                "type": "integer",
+                                "description": "Quantity"
+                              }
+                            }
+                          },
+                          "description": "Goods data"
+                        }
+                      }
+                    },
+                    "description": "Message data"
+                  }
+                },
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{
+                  \"ReportSource\": \"AlkCorBuh\",
+                  \"ReportReceiver\": \"Toir\",
+                  \"ReportID\": \"ac713d56-6240-45e2-95f3-222d998b6b2d\",
+                  \"ReportDate\": \"2023-10-05T16:35:11\",
+                  \"Message\": [
+{
+  \"MessageType\": \"WriteOff\",
+\"MessageID\": \"66b8e034-6376-11ee-80d0-005056b27ce4\",
+\"Date\": \"2023-10-05T16:30:29\",
+\"ExternalCode\": \"d61167c5-6375-11ee-80ca-005056b25f0f\",
+\"Goods_data\": [
+{
+\"ExternalCode_str\": \"25d03f5e-995f-414d-bb93-8ce851495752\",
+\"MaterialMDM\": 32941,
+\"Unit_code\": \"796\",
+\"Quantity\": 2
+}
+]
+}
+]
+}"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Resource created",
+"content": {
+"text": {
+"example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+}
+}
+},
+"400": {
+"description": "Bad request"
+}
+}
+}
+},
+"/ESB/BD/ToirToAlkCorBuh": {
+"post": {
+"summary": "Create a resource",
+"requestBody": {
+"description": "Request",
+"required": true,
+"content": {
+"application/json": {
+"schema": {
+"type": "object",
+"properties": {
+"ReportSource": {
+"type": "string",
+"description": "Source of the report",
+"example": "Toir"
+},
+"ReportReceiver": {
+"type": "string",
+"description": "Receiver of the report"
+},
+"ReportID": {
+"type": "string",
+"description": "ID of the report"
+},
+"ReportDate": {
+"type": "string",
+"format": "date-time",
+"description": "Date of the report"
+},
+"x_debag_key": {
+"type": "string",
+"description": "Debug key"
+},
+"Message": {
+"type": "array",
+"items": {
+"type": "object",
+"properties": {
+"MessageType": {
+"type": "string",
+"description": "Type of the message"
+},
+"MessageID": {
+"type": "string",
+"description": "ID of the message"
+},
+"Date": {
+"type": "string",
+"format": "date-time",
+"description": "Date of the message"
+},
+"ExternalCode": {
+"type": "string",
+"description": "External code"
+},
+"OrganizationMDM": {
+"type": "integer",
+"description": "Organization MDM"
+},
+"OrganizationINN": {
+"type": "string",
+"description": "Organization INN"
+},
+"OrganizationKPP": {
+"type": "string",
+"description": "Organization KPP"
+},
+"SubdivisionMDM": {
+"type": "integer",
+"description": "Subdivision MDM"
+},
+"WarehouseMDM": {
+"type": "integer",
+"description": "Warehouse MDM"
+},
+"ManufactoryMDM": {
+"type": "integer",
+"description": "Manufactory MDM"
+},
+"DocumentNumber": {
+"type": "string",
+"description": "Document number"
+},
+"DocumentDate": {
+"type": "string",
+"format": "date-time",
+"description": "Document date"
+},
+"Comment": {
+"type": "string",
+"description": "Comment"
+},
+"Goods_data": {
+"type": "array",
+"items": {
+"type": "object",
+"properties": {
+"ExternalCode_str": {
+"type": "string",
+"description": "External code"
+},
+"MaterialMDM": {
+"type": "integer",
+"description": "Material MDM"
+},
+"Unit_code": {
+"type": "string",
+"description": "Unit code"
+},
+"Quantity": {
+"type": "integer",
+"description": "Quantity"
+}
+}
+},
+"description": "Goods data"
+}
+}
+},
+"description": "Message data"
+}
+},
+"xml": {
+"name": "DocNum",
+"wrapped": true
+}
+},
+"examples": {
+"example": {
+"value": "{
+\"ReportSource\": \"Toir\",
+\"ReportReceiver\": \"AlkCorBuh\",
+\"ReportID\": \"68aa1ec7-f7e3-45cc-a1e0-c16ed22e7d05\",
+\"ReportDate\": \"2023-10-06T09:52:45\",
+\"x_debag_key\": \"dd78898714782f837370def1ad741e3b\",
+\"Message\": [
+{
+\"MessageType\": \"VnPotrTov\",
+\"MessageID\": \"51adc738-6414-11ee-80ca-005056b25f0f\",
+\"Date\": \"2023-10-06T09:48:19\",
+\"ExternalCode\": \"51adc738-6414-11ee-80ca-005056b25f0f\",
+\"OrganizationMDM\": 5,
+\"OrganizationINN\": \"3122000300\",
+\"OrganizationKPP\": \"312201001\",
+\"SubdivisionMDM\": 3826,
+\"WarehouseMDM\": 2564,
+\"ManufactoryMDM\": 3826,
+\"DocumentNumber\": \"00000005275\",
+\"DocumentDate\": \"2023-10-06T09:48:18\",
+\"Comment\":\"test\",
+\"Goods_data\": [
+{
+\"ExternalCode_str\": \"\",
+\"MaterialMDM\": 69464,
+\"Unit_code\": \"796 \",
+\"Quantity\": 1
+}
+]
+}
+]
+}"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Resource created",
+"content": {
+"text": {
+"example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+}
+}
+},
+"400": {
+"description": "Bad request"
+}
+}
+}
+}
+}
+}

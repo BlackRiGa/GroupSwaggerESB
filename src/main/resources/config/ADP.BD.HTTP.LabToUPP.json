@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.LabToUPP",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.LabToUPP API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/BD/LabToUPP/V1": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ИдентификаторИБ\": \"AlkAskNpl\",\n    \"Испытания\": [\n        {\n            \"УИД\": \"b721a1bd-627b-11ee-80d4-005056b2f50f\",\n            \"ИдентификаторИБ\": \"AlkAskNpl\",\n            \"УИДПоказателя\": \"d6e98e31-9754-11e5-974f-0050568204da\",\n            \"ДатаИспытания\": \"2023-10-04T12:28:40\",\n            \"Результат\": 1.28,\n            \"НомерДокументаНПЛ\": \"000112120\",\n            \"ДатаДокументаНПЛ\": \"2023-10-04T09:03:24\",\n            \"ТипДокументаНПЛ\": \"Испытание показателя\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource returned",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": "{\"response\":\"Истина\"}"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

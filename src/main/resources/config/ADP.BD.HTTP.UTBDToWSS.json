@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.UTBDToWSS",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.UTBDToWSS API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/UTBDToWSS/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "Not loggins in nginx(may be very big message)"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/UTBDToWSS/getStatus": {
+      "post": {
+        "summary": "Get a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/UTBDToWSS/chngStatus": {
+      "post": {
+        "summary": "Change a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ReportSource\": \"raBD\",\n    \"ReportReceiver\": \"Unloading_WSSD\",\n    \"ReportDate\": \"2023-10-06T15:09:38\",\n    \"ReportID\": \"6ab9f053-77fd-4726-a6dc-4eaa68affff8\",\n    \"Message\": [\n        {\n            \"ListID\": 130,\n            \"ID_WSSD\": 2900714,\n            \"SolutionName\": \"test\",\n            \"Comment\": \"test\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><AcceptDocumentSolutionResponse xmlns=\"http://tempuri.org/\"><AcceptDocumentSolutionResult><OperationResult>true</OperationResult></AcceptDocumentSolutionResult></AcceptDocumentSolutionResponse></soap:Body></soap:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

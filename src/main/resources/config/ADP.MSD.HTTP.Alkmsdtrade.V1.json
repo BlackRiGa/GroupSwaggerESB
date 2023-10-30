@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.MSD.HTTP.Alkmsdtrade.V1",
+    "version": "1.0.0",
+    "description": "ADP.MSD.HTTP.Alkmsdtrade.V1 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/Alkmsdtrade": {
+      "post": {
+        "summary": "Post a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example1": {
+                  "value": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:efk=\"http://www.efko.ru/efko1C/\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <efk:ExecProc>\n            <efk:ObjectType>SalesDoc</efk:ObjectType>\n            <efk:Version>1</efk:Version>\n            <efk:Parameters>{\"ManufacturerINN\":\"3122000300\", \"ManufacturerKPP\":\"312201001\", \"StartData\":\"06.10.2023 0:00:00\", \"EndData\":\"07.10.2023 0:00:00\"}</efk:Parameters>\n        </efk:ExecProc>\n    </soapenv:Body>\n</soapenv:Envelope>"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\\\"http://www.efko.ru/efko1C/\\\">\n    <m:return xmlns:xs=\\\"http://www.w3.org/2001/XMLSchema\\\" xmlns:xsi=\\\"http://www.w3.org/2001/XMLSchema-instance\\\">OK</m:return>\n</m:ExecWSResponse>"
+              }
+            }
+          },
+          "406": {
+            "description": "",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Alkmsdtrade/wsdl": {
+      "get": {
+        "summary": "GET a resource",
+        "responses": {
+          "200": {
+            "description": "WSDL xml",
+            "content": {
+              "text": {
+                "example": "WSDL xml"
+              }
+            }
+          },
+          "406": {
+            "description": "",
+            "content": {
+              "text": {
+                "example": "Bad request / № error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

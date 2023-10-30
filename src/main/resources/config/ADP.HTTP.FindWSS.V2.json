@@ -1,0 +1,244 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.FindWSS.V2",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.FindWSS.V2 API for swagger."
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/findwss/getchanges/V2": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "TimeModified": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "ListID": {
+                          "type": "integer"
+                        },
+                        "SourceSystem": {
+                          "type": "integer"
+                        },
+                        "Fields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "TimeModified",
+                        "ListID",
+                        "SourceSystem",
+                        "Fields"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"ReportSource\": \"MSD\",\n    \"ReportReceiver\": \"Unloading_WSSD\",\n    \"ReportID\": \"106ba9e4-aa1c-4648-a8af-92b2b2fd0c1a\",\n    \"ReportDate\": \"2023-10-27T11:39:55\",\n    \"StringConnect\": \"Srvr=\\\"Efko1csqlMzhd:3541\\\";Ref=\\\"AlkMsdTrade\\\";\",\n    \"Message\": [\n        {\n            \"MessageType\": \"Contracts\",\n            \"MessageID\": \"aa2f3bcb-7ecd-41b8-b26f-a3cde850a5a1\",\n            \"Date\": \"2023-10-27T11:39:55\",\n            \"TimeModified\": \"2023-10-27T11:34:54\",\n            \"ListID\": 120,\n            \"SourceSystem\": 8,\n            \"Fields\": [\n                \"ID\",\n                \"TimeModified\",\n                \"ListID\",\n                \"test\"\n            ]\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/findwss/getdata/V2": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "ProcessUserName": {
+                          "type": "string"
+                        },
+                        "ListID": {
+                          "type": "string"
+                        },
+                        "SourceSystem": {
+                          "type": "string"
+                        },
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "ProcessSettingName": {
+                          "type": "string"
+                        },
+                        "Body": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ListID": {
+                                "type": "string"
+                              },
+                              "ID_WSSD": {
+                                "type": "integer"
+                              },
+                              "GUID": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "FieldNames": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "Date",
+                        "ProcessUserName",
+                        "ListID",
+                        "SourceSystem",
+                        "MessageType",
+                        "ProcessSettingName",
+                        "Body",
+                        "FieldNames"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n  \"ReportSource\": \"ISUI\",\n  \"ReportReceiver\": \"WSSD\",\n  \"ReportID\": \"GetErequests\",\n  \"ReportDate\": \"2023-10-27T11:45:02\",\n  \"StringConnect\": \"helpdesk.efko.ru\",\n  \"Message\": [\n    {\n      \"Date\": \"2023-10-27T11:45:02\",\n      \"ProcessUserName\": \"tech_wss_ere\",\n      \"ListID\": null,\n      \"SourceSystem\": \"11\",\n      \"MessageType\": \"Erequests\",\n      \"ProcessSettingName\": \"Erequests\",\n      \"Body\": [\n        {\n          \"ListID\": 130,\n          \"ID_WSSD\": 2951344,\n          \"GUID\": \"isui\"\n        }\n      ],\n      \"FieldNames\": [\n        \"Статус\",\n        \"Инициатор\",\n        \"Сканированный оригинал\"\n      ]\n    }\n  ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.MDMGetMasterData",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.MDMGetMasterData API for swagger."
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/MDM/GetMasterData/V1": {
+      "post": {
+        "summary": "Get a resource",
+        "parameters": [
+          {
+            "name": "baseId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The baseId parameter"
+          },
+          {
+            "name": "NoMessage",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The NoMessage parameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns1:getMasterDataResponse xmlns:ns1=\"uri:mdm\"><return xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:type=\"xsd:string\">{\"NoMessage\":1539}</return></ns1:getMasterDataResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

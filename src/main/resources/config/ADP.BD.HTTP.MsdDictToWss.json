@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.MsdDictToWss",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.MsdDictToWss API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/MSDDictToWSS/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "[\n  {\n    \"ListID\": 541,\n    \"GUID\": \"771ea4e4-61c9-11ee-80d0-005056b27ce4\",\n    \"ID_WSSD\": \"-\",\n    \"НомерДокумента\": \"000049858\",\n    \"Дата\": \"2023-10-03T13:08:09\",\n    \"Организация\": 65,\n    \"Контрагент\": 104756,\n    \"Номенклатура\": 47,\n    \"НеАктуален\": false,\n    \"ДатаСогласованияПоследнимСогласующим\": \"2023-10-04T09:14:42\",\n    \"Статус\": \"Отказано\",\n    \"КомментарийПоследнегоСогласующего\": \"-500\"\n  }\n]"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource returned",
+            "content": {
+              " text/xmml": {
+                "example": "<Resp>\n    <status>true</status>\n    <listID>541</listID>\n    <inCode>7ad9c4cc-61e4-11ee-80d0-005056b27ce4</inCode>\n    <message></message>\n    <outCode>16601</outCode>\n</Resp>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/MSDDictToWSS/getStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "[\n    {\n        \"ListID\": 541,\n        \"GUID\": \"dc9d6d88-6117-11ee-80d0-005056b27ce4\",\n        \"ID_WSSD\": \"16532\"\n    },\n    {\n        \"ListID\": 541,\n        \"GUID\": \"34bfcdbd-611b-11ee-80d0-005056b27ce4\",\n        \"ID_WSSD\": \"16560\"\n    }\n]"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource returned",
+            "content": {
+              " text/xmml": {
+                "example": "FindObjectsResponse example for current listId"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

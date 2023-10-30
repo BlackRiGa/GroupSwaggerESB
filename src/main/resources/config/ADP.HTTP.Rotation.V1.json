@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.Rotation.V1",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.Rotation.V1 API for swagger. Необхоимо добавить логирование на точках (в прошлый раз так и не добавили, потому что откатили изменения)."
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/rotation/startDB": {
+      "post": {
+        "summary": "Start the database rotation",
+        "parameters": [
+          {
+            "name": "full",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "description": "Specifies if the rotation should be full (true) or not (false)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Database rotation started successfully",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">200</m:return></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/rotation/getdata": {
+      "post": {
+        "summary": "Run a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {},
+              "examples": {
+                "example1": {
+                  "value": ""
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Run a resource",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/rotation/endload": {
+      "post": {
+        "summary": "EndLoad a resource",
+        "parameters": [
+          {
+            "name": "full",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "description": "Specifies if the rotation should be full (true) or not (false)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "EndLoad a resource",
+            "content": {
+              "text": {
+                "example": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

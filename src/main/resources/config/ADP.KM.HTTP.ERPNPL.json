@@ -1,0 +1,330 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.KM.HTTP.ERPNPL",
+    "version": "1.0.0",
+    "description": "ADP.KM.HTTP.ERPNPL API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/KM/ErpToNpl": {
+      "post": {
+        "summary": "Post a resource",
+        "requestBody": {
+          "description": "JSON Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "DeliveryNumber": {
+                          "type": "string"
+                        },
+                        "DeliveryDate": {
+                          "type": "string"
+                        },
+                        "ID": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "IDOrganization": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "IDSubdivision": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "IDMaterial": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "NameMaterial": {
+                          "type": "string"
+                        },
+                        "IDАnalysisRules": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "NameАnalysisRules": {
+                          "type": "string"
+                        },
+                        "AddInfo": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "DeliveryNumber",
+                        "DeliveryDate",
+                        "ID",
+                        "IDOrganization",
+                        "IDSubdivision",
+                        "IDMaterial",
+                        "NameMaterial",
+                        "IDАnalysisRules",
+                        "NameАnalysisRules",
+                        "AddInfo"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"ReportSource\": \"ErpKM\",\n    \"ReportReceiver\": \"KMNpl\",\n    \"ReportID\": \"6e6c2027-a718-481b-9d1c-6c07e98f2b55\",\n    \"ReportDate\": \"2023-10-30T14:41:35\",\n    \"StringConnect\": \"Srvr=\\\"AlkKubMasERP\\\";Ref=\\\"alkkubmaserp\\\";\",\n    \"Message\": [\n        {\n            \"MessageType\": \"OrderRequest\",\n            \"MessageID\": \"23bc3dc8-7719-11ee-aa3a-005056b2ce16\",\n            \"Date\": \"2023-10-30T14:40:36\",\n            \"DeliveryNumber\": \"ТА00-I62801\",\n            \"DeliveryDate\": \"30.10.2023 14:40:35\",\n            \"ID\": \"23bc3dc8-7719-11ee-aa3a-005056b2ce16\",\n            \"IDOrganization\": \"deb3b3f5-5446-11ec-aa31-005056b2ce16\",\n            \"IDSubdivision\": \"ab35226b-8299-11ec-aa34-005056b2ce16\",\n            \"IDMaterial\": \"253b5261-5421-11ec-aa31-005056b2ce16\",\n            \"NameMaterial\": \"Шрот подсолнечный, ГРАНУЛИРОВАННЫЙ (39%)\",\n            \"IDАnalysisRules\": \"7643fdbf-4de8-11ec-aa31-005056b2ce16\",\n            \"NameАnalysisRules\": \"Приемка\",\n            \"AddInfo\": \"HS660SH MAN\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "406": {
+            "description": "",
+            "content": {
+              "text": {
+                "example": "Bad request / № error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ESB/KM/NplToErp": {
+      "post": {
+        "summary": "Post a resource",
+        "requestBody": {
+          "description": "JSON Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string",
+                    "description": "The source of the report."
+                  },
+                  "ReportReceiver": {
+                    "type": "string",
+                    "description": "The receiver of the report."
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "The unique identifier of the report."
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date and time when the report was created."
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string",
+                          "description": "The type of message."
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The unique identifier of the message."
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "The date and time of the message."
+                        },
+                        "DeliveryNumber": {
+                          "type": "string",
+                          "description": "The delivery number."
+                        },
+                        "DeliveryDate": {
+                          "type": "string",
+                          "description": "The date and time of delivery."
+                        },
+                        "ID": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The unique identifier."
+                        },
+                        "IDMaterial": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The unique identifier of the material."
+                        },
+                        "Result": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The result identifier."
+                        },
+                        "IDMethod": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The method identifier."
+                        },
+                        "NumberKU": {
+                          "type": "string",
+                          "description": "The KU number."
+                        },
+                        "AddAnalytics": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Additional analytics identifier."
+                        },
+                        "IDOrganization": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The organization identifier."
+                        },
+                        "IDSubdivision": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The subdivision identifier."
+                        },
+                        "IDTankFarm": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The tank farm identifier."
+                        },
+                        "StartDateTrials": {
+                          "type": "string",
+                          "description": "The start date of trials."
+                        },
+                        "EndDateTrials": {
+                          "type": "string",
+                          "description": "The end date of trials."
+                        },
+                        "Remark": {
+                          "type": "string",
+                          "description": "Remarks or comments."
+                        },
+                        "Change": {
+                          "type": "string",
+                          "description": "Changes made."
+                        },
+                        "ChangeStartTime": {
+                          "type": "string",
+                          "description": "The start time of changes."
+                        },
+                        "ChangeEndTime": {
+                          "type": "string",
+                          "description": "The end time of changes."
+                        },
+                        "NameResponsible": {
+                          "type": "string",
+                          "description": "Name of the responsible person."
+                        },
+                        "IDOrder": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The order identifier."
+                        },
+                        "IDAnalysis": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "The analysis identifier."
+                        },
+                        "Value": {
+                          "type": "number",
+                          "description": "The value."
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"ReportSource\": \"KMNpl\",\n    \"ReportReceiver\": \"ErpKM\",\n    \"ReportID\": \"c03e7ddc-c2d7-4fa1-841f-92d38aa0779d\",\n    \"ReportDate\": \"2023-10-30T14:38:17\",\n    \"Message\": [\n        {\n            \"MessageType\": \"hdr_OrderResponse\",\n            \"MessageID\": \"20a30ed7-7716-11ee-80d4-005056b2f50f\",\n            \"Date\": \"2023-10-30T14:38:09\",\n            \"DeliveryNumber\": \"000113738\",\n            \"DeliveryDate\": \"30.10.2023 14:19:02\",\n            \"ID\": \"20a30ed7-7716-11ee-80d4-005056b2f50f\",\n            \"IDMaterial\": \"c6194c1e-5684-11ec-aa31-005056b2ce16\",\n            \"Result\": \"98885f9e-5e4e-11ec-80c7-005056b2f50f\",\n            \"IDMethod\": \"dc7c3832-1603-11ec-80c3-005056b2f50f\",\n            \"NumberKU\": \"\",\n            \"AddAnalytics\": \"29eafd14-f1f1-11ec-aa34-005056b2ce16\",\n            \"IDOrganization\": \"deb3b3f5-5446-11ec-aa31-005056b2ce16\",\n            \"IDSubdivision\": \"ab35226b-8299-11ec-aa34-005056b2ce16\",\n            \"IDTankFarm\": \"14841583-5664-11ec-aa31-005056b2ce16\",\n            \"StartDateTrials\": \"20231030143702\",\n            \"EndDateTrials\": \"20231030143744\",\n            \"Remark\": \"14:00 после подработки автоприемка 2\",\n            \"Change\": \"Change2\",\n            \"ChangeStartTime\": \"00010101080000\",\n            \"ChangeEndTime\": \"00010101200000\",\n            \"NameResponsible\": \"Вахрушева Любовь Александровна\"\n        },\n        {\n            \"MessageType\": \"tbl_OrderResponse\",\n            \"MessageID\": \"20a30ed7-7716-11ee-80d4-005056b2f50f\",\n            \"Date\": \"2023-10-30T14:38:09\",\n            \"IDOrder\": \"20a30ed7-7716-11ee-80d4-005056b2f50f\",\n            \"IDAnalysis\": \"549fc731-1d23-11ec-80c5-005056b2f50f\",\n            \"Value\": 6.4\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "406": {
+            "description": "",
+            "content": {
+              "text": {
+                "example": "Bad request / № error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

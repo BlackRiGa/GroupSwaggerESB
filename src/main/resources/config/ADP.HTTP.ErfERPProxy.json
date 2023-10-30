@@ -1,0 +1,271 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.ErfERPProxy",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.ErfERPProxy API for swagger. There is only 1 input node: /ESB/HTTP/ErfErpProxy, but there are 3 types of addresses:"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/HTTP/ErfErpProxy/releaseCodes": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LineId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "legalEntity": {
+                          "type": "string"
+                        },
+                        "lotNum": {
+                          "type": "string"
+                        },
+                        "manufactureDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "LineId",
+                        "MessageType",
+                        "id"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportDate",
+                  "ReportID",
+                  "ReportReceiver",
+                  "ReportSource",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"ReportDate\": \"2023-10-27T10:39:57\",\n    \"ReportID\": \"14cde6a2-2487-4d1e-9273-55fe22733ded\",\n    \"ReportReceiver\": \"1c_ERP\",\n    \"ReportSource\": \"Track_Trace\",\n    \"Message\": [\n        {\n            \"LineId\": \"b7ec4fd6-2291-11eb-814d-005056bb8403\",\n            \"MessageType\": \"releaseCodes\",\n            \"id\": \"2827aab2-458c-43ca-a848-d4c4f9613f23\",\n            \"items\": [\"test1\",\"test2\"\n            ],\n            \"legalEntity\":\"test\",\n            \"lotNum\": \"3507\",\n            \"manufactureDate\": \"2023-10-28T10:36:00+03\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ESB/HTTP/ErfErpProxy/codesStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "LineId": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "MessageType": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "LineId",
+                        "MessageType"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportDate",
+                  "ReportID",
+                  "ReportReceiver",
+                  "ReportSource",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportDate\":\"2023-10-27T11:12:57\",\"ReportID\":\"c3e37104-9595-49b9-a274-fe45664353a1\",\"ReportReceiver\":\"1c_ERP\",\"ReportSource\":\"Track_Trace\",\"Message\":[{\"LineId\":\"5fb111aa-a403-11eb-80b9-005056b2ee34\",\"MessageType\":\"codesStatus\"}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ESB/HTTP/ErfErpProxy/archSrvState": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "items"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportDate",
+                  "ReportID",
+                  "ReportReceiver",
+                  "ReportSource",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportDate\":\"2023-10-27T11:06:28\",\"ReportID\":\"8828a809-c44b-47c6-b7d4-33bd39bb3448\",\"ReportReceiver\":\"1c_ERP\",\"ReportSource\":\"Track_Trace\",\"Message\":[{\"MessageType\":\"archSvrState\",\"items\":[]}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

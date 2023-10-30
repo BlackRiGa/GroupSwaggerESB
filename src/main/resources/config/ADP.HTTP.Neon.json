@@ -1,0 +1,276 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.Neon",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.Neon API for swagger. No logging added on the adapter"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/neon/execProc/getUtilization": {
+      "post": {
+        "summary": "getUtilization a resource",
+        "requestBody": {
+          "description": "JSON Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "exclusions": {
+                    "type": "object",
+                    "properties": {
+                      "Filter1": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter2": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter3": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter4": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter5": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter6": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "Filter7": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parms": {
+                    "type": "object",
+                    "properties": {
+                      "date_start": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "date_end": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "mdm": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n  \"exclusions\": {\n    \"Filter1\": {\n      \"names\": [\n        \"period\",\n        \"mainDistributorMDM\",\n        \"subDistributorsMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter2\": {\n      \"names\": [\n        \"period\",\n        \"DistributorMDM\",\n        \"SKUMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter3\": {\n      \"names\": [\n        \"period\",\n        \"SKUMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter4\": {\n      \"names\": [\n        \"period\",\n        \"brandMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter5\": {\n      \"names\": [\n        \"period\",\n        \"mainGroup\",\n        \"groupMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter6\": {\n      \"names\": [\n        \"period\",\n        \"channelsID\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    },\n    \"Filter7\": {\n      \"names\": [\n        \"period\",\n        \"ID\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    }\n  },\n  \"parms\": {\n    \"date_start\": \"2023-09-01T00:00:00\",\n    \"date_end\": \"2023-09-30T23:59:59\",\n    \"mdm\": [\n      100753,\n      107329,\n      99943\n    ]\n  }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/neon/execProc/getAKB": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "exclusions": {
+                    "type": "object",
+                    "properties": {
+                      "Filter1": {
+                        "type": "object",
+                        "properties": {
+                          "names": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parms": {
+                    "type": "object",
+                    "properties": {
+                      "date_start": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "date_end": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "mdm": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n  \"exclusions\": {\n    \"Filter1\": {\n      \"names\": [\n        \"period\",\n        \"mainDistributorMDM\",\n        \"subDistributorsMDM\",\n        \"createdate\"\n      ],\n      \"lines\": []\n    }\n  },\n  \"parms\": {\n    \"date_start\": \"2023-09-01T00:00:00\",\n    \"date_end\": \"2023-09-30T23:59:59\",\n    \"mdm\": [\n      100753,\n      107329,\n      99943\n    ]\n  }\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

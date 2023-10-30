@@ -1,0 +1,222 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.ContractsToWSS",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.ContractsToWSS API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ContractsToWSS/create": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "ListID": {
+                          "type": "integer"
+                        },
+                        "ItemFields": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "FieldName": {
+                                "type": "string"
+                              },
+                              "FieldStringValue": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "FieldName",
+                              "FieldStringValue"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "ListID",
+                        "ItemFields"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportSource\":\"MSD\",\"ReportReceiver\":\"Unloading_WSSD\",\"ReportID\":\"c448626e-fd4d-46c1-a4d3-3a0ddfa63718\",\"ReportDate\":\"2023-10-10T09:48:30\",\"Message\":[{\"MessageType\":\"Specifications\",\"MessageID\":\"03f2c771-6739-11ee-80eb-005056b224ae\",\"Date\":\"2023-10-10T09:48:30\",\"ListID\":121,\"ItemFields\":[{\"FieldName\":\"Тип документа\",\"FieldStringValue\":\"1\"},{\"FieldName\":\"Код 1С\",\"FieldStringValue\":\"03f2c771-6739-11ee-80eb-005056b224ae\"},{\"FieldName\":\"ID_WSSD\",\"FieldStringValue\":\"-\"},{\"FieldName\":\"Вид договора\",\"FieldStringValue\":\"18\"},{\"FieldName\":\"Вид доп. соглашения\",\"FieldStringValue\":\"3\"},{\"FieldName\":\"Вид транспорта\",\"FieldStringValue\":\"1\"},{\"FieldName\":\"Номер\",\"FieldStringValue\":\"3\"},{\"FieldName\":\"Ссылка на договор\",\"FieldStringValue\":\"290358\"},{\"FieldName\":\"Содержание\",\"FieldStringValue\":\"РШ\"},{\"FieldName\":\"Номенклатурная группа\",\"FieldStringValue\":\"16\"},{\"FieldName\":\"Форма оплаты\",\"FieldStringValue\":\"1\"},{\"FieldName\":\"Плательщик\",\"FieldStringValue\":\"1\"},{\"FieldName\":\"Способ доставки\",\"FieldStringValue\":\"1\"},{\"FieldName\":\"Исчисление отсрочки\",\"FieldStringValue\":\"5\"},{\"FieldName\":\"Срок отсрочки\",\"FieldStringValue\":\"0\"},{\"FieldName\":\"Вид отсрочки\",\"FieldStringValue\":\"4\"},{\"FieldName\":\"Дата\",\"FieldStringValue\":\"10.10.2023 0:00:00\"},{\"FieldName\":\"Дата начала поставки\",\"FieldStringValue\":\"10.10.2023 0:00:00\"}]}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><AcceptDocumentSolutionResponse xmlns=\"http://tempuri.org/\"><AcceptDocumentSolutionResult><OperationResult>true</OperationResult></AcceptDocumentSolutionResult></AcceptDocumentSolutionResponse>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/ContractsToWSS/getStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Body": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "ListID": {
+                                "type": "integer"
+                              },
+                              "ID_WSSD": {
+                                "type": "string"
+                              },
+                              "GUID_1C": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "ListID",
+                              "ID_WSSD",
+                              "GUID_1C"
+                            ]
+                          }
+                        },
+                        "FieldNames": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "Body",
+                        "FieldNames"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\"ReportSource\":\"1c_SRM\",\"ReportReceiver\":\"Unloading_WSSD_Get\",\"ReportID\":\"f4882613-72df-468f-9aaa-f1e23f050e0c\",\"ReportDate\":\"2023-10-10T10:09:17\",\"StringConnect\":\"Srvr=\\\"1c-app\\\";Ref=\\\"srm\\\";\",\"Message\":[{\"Body\":[{\"ListID\":120,\"ID_WSSD\":\"214963\",\"GUID_1C\":\"b3fb48be-8643-11ec-bd93-fa163e986fe3\"},{\"ListID\":120,\"ID_WSSD\":\"214564\",\"GUID_1C\":\"4d2fc9b8-8bc8-11ec-948b-fa163e986fe3\"},{\"ListID\":121,\"ID_WSSD\":\"181144\",\"GUID_1C\":\"9a184890-5bdf-11ec-7797-fa163e986fe3\"}],\"FieldNames\":[\"test\"]}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "Typical response from WSS/ no logs from WSS"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

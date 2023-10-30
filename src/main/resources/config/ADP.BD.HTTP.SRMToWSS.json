@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.SRMToWSS",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.SRMToWSS API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ToWSSRequest/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": " Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ReportSource\": \"1c_SRM\",\n    \"ReportReceiver\": \"Unloading_WSSD_Contracts\",\n    \"ReportID\": \"7e49ab99-c066-4c65-8e86-208683d3610f\",\n    \"ReportDate\": \"2023-10-03T17:02:21\",\n    \"StringConnect\": \"Srvr=\\\"1c-app\\\";Ref=\\\"srm\\\";\",\n    \"Message\": [\n        {\n            \"MessageType\": \"Specifications\",\n            \"MessageID\": \"232f1b88-61f4-11ee-83d3-fa163e986fe3\",\n            \"Date\": \"2023-10-03T16:54:00\",\n            \"ListID\": 121,\n            \"ItemFields\": [\n                {\n                    \"FieldName\": \"Система-источник\",\n                    \"FieldStringValue\": \"1\"\n                },\n                {\n                    \"FieldName\": \"Тип документа\",\n                    \"FieldStringValue\": \"4\"\n                },\n                {\n                    \"FieldName\": \"Код 1С\",\n                    \"FieldStringValue\": \"232f1b88-61f4-11ee-83d3-fa163e986fe3\"\n                },\n                {\n                    \"FieldName\": \"Вид договора\",\n                    \"FieldStringValue\": \"18\"\n                },\n                {\n                    \"FieldName\": \"Процент\",\n                    \"FieldStringValue\": \"1\"\n                },\n                {\n                    \"FieldName\": \"Номер\",\n                    \"FieldStringValue\": \"Спецификация 000047\"\n                },\n                {\n                    \"FieldName\": \"Дата\",\n                    \"FieldStringValue\": \"2023-10-03 12:00:00\"\n                },\n                {\n                    \"FieldName\": \"ID_WSSD\",\n                    \"FieldStringValue\": \"-\"\n                },\n                {\n                    \"FieldName\": \"Срок исполнения\",\n                    \"FieldStringValue\": \"2023-10-04 12:00:00\"\n                },\n                {\n                    \"FieldName\": \"Автопролонгация\",\n                    \"FieldStringValue\": false\n                },\n                {\n                    \"FieldName\": \"Срок отсрочки\",\n                    \"FieldStringValue\": \"0\"\n                },\n                {\n                    \"FieldName\": \"Рамочные\",\n                    \"FieldStringValue\": false\n                },\n                {\n                    \"FieldName\": \"Содержание\",\n                    \"FieldStringValue\": \"Сигнализатор токсичных и горючих газов Аналитприбор СО1 угарный газ 150...253В б/в IP 30\"\n                },\n                {\n                    \"FieldName\": \"Форма оплаты\",\n                    \"FieldStringValue\": \"1\"\n                },\n                {\n                    \"FieldName\": \"Плательщик\",\n                    \"FieldStringValue\": \"2\"\n                },\n                {\n                    \"FieldName\": \"Валюта\",\n                    \"FieldStringValue\": \"13\"\n                },\n                {\n                    \"FieldName\": \"Сумма\",\n                    \"FieldStringValue\": \"16634,4\"\n                },\n                {\n                    \"FieldName\": \"Сумма предоплаты\",\n                    \"FieldStringValue\": \"0\"\n                },\n                {\n                    \"FieldName\": \"Организация\",\n                    \"FieldStringValue\": \"198\"\n                },\n                {\n                    \"FieldName\": \"Контрагент\",\n                    \"FieldStringValue\": \"303\"\n                },\n                {\n                    \"FieldName\": \"Статус\",\n                    \"FieldStringValue\": \"1\"\n                },\n                {\n                    \"FieldName\": \"Вид продукции_Предмет\",\n                    \"FieldStringValue\": \"0\"\n                },\n                {\n                    \"FieldName\": \"Привнак\",\n                    \"FieldStringValue\": \"4\"\n                },\n                {\n                    \"FieldName\": \"Рассылка\",\n                    \"FieldStringValue\": \"\"\n                },\n                {\n                    \"FieldName\": \"Элемент сохраненности ползователем\",\n                    \"FieldStringValue\": true\n                },\n                {\n                    \"FieldName\": \"Ответственный менеджер\",\n                    \"FieldStringValue\": \"efko.ru/a.i.voytenko\"\n                },\n                {\n                    \"FieldName\": \"Инициатор\",\n                    \"FieldStringValue\": \"efko.ru/a.i.voytenko\"\n                },\n                {\n                    \"FieldName\": \"Дата начала поставки\",\n                    \"FieldStringValue\": \"2023-10-01 12:00:00\"\n                },\n                {\n                    \"FieldName\": \"Дата окончания поставки\",\n                    \"FieldStringValue\": \"2023-10-31 11:59:59\"\n                },\n                {\n                    \"FieldName\": \"Месяц передачи товара\",\n                    \"FieldStringValue\": \"1\"\n                },\n                {\n                    \"FieldName\": \"Грузоотправитель_текст\",\n                    \"FieldStringValue\": \"Аналитприбор ФГУП СПО\"\n                }\n            ]\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<soapenv:Envelope xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <soapenv:Body>\n        <AcceptDocumentSolution xmlns=\"http://tempuri.org/\">\n            <ListID>121</ListID>\n            <ItemID>534949</ItemID>\n            <SolutionName>Отправить на доработку</SolutionName>\n            <Comment>Создана новая версия договора</Comment>\n        </AcceptDocumentSolution>\n    </soapenv:Body>\n</soapenv:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/SrmToWss/getStatus": {
+      "get": {
+        "summary": "Get a resource",
+        "responses": {
+          "200": {
+            "description": "Resource returned",
+            "content": {
+              "text": {
+                "example": "No information in logs"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

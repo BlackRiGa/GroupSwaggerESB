@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.KaznToSppMatr.V2",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.KaznToSppMatr.V2 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/GetDataFromKaznV1/MaterialyProjectStructure/1": {
+      "get": {
+        "summary": "Get a resource",
+        "responses": {
+          "200": {
+            "description": "Example resource:",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "<Response>{\"#\",acf6192e-81ca-46ef-93a6-5a6968b78663,\n{9,\n{10,\n{1,\"Код\",\n{\"Pattern\",\n{\"S\",9,1},\n{\"L\"}\n},\"Код\",9},\n{2,\"Наименование\",\n{\"Pattern\",\n{\"S\",150,1},\n{\"L\"}\n},\"Наименование\",150},\n{3,\"ПометкаУдаления\",\n{\"Pattern\",\n{\"B\"},\n{\"L\"}\n},\"ПометкаУдаления\",2},\n{4,\"РуководительПроекта\",\n{\"Pattern\",\n{\"S\",100,1},\n{\"L\"},\n{\"N\"}\n},\"РуководительПроекта\",100},\n{5,\"ОтветственныйУПФ\",\n{\"Pattern\",\n{\"S\",100,1},\n{\"L\"},\n{\"N\"}\n},\"ОтветственныйУПФ\",100},\n{6,\"Завершен\",\n{\"Pattern\",\n{\"B\"},\n{\"L\"},\n{\"N\"}\n},\"Завершен\",32},\n{7,\"Уровень\",\n{\"Pattern\",\n{\"L\"},\n{\"N\"}\n},\"Уровень\",32},\n{8,\"КодВладельца\",\n{\"Pattern\",\n{\"S\",9,1},\n{\"L\"}\n},\"КодВладельца\",9},\n{9,\"КодВладельцаВладельца\",\n{\"Pattern\",\n{\"S\",9,1},\n{\"L\"}\n},\"КодВладельцаВладельца\",9},\n{10,\"Ссылка\",\n{\"Pattern\",\n{\"S\"}\n},\"\",0}\n} ..."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

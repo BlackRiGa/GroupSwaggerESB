@@ -1,0 +1,64 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.PDSOUTH.HTTP.FromWMSLeadSimtaman.V1",
+    "version": "1.0.0",
+    "description": "ADP.PDSOUTH.HTTP.FromWMSLeadSimtaman.V1 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/PDSOUTH/FromWMSLeadSimtaman/V1": {
+      "post": {
+        "summary": "Post a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "xml": {
+                  "name": "DocNum",
+                  "wrapped": true
+                }
+              },
+              "examples": {
+                "example1": {
+                  "value": "<DOCNUM>\n  <DocNumCode>FADED983-DD66-4636-A3A9-6164F6CB53F6</DocNumCode>\n  <hdr_DeliveryResponse>\n    <ExternalCode>DAE29EEB-7B25-421F-81A5-692EF30C2CF1</ExternalCode>\n    <WarehouseCode>FSKZ</WarehouseCode>\n    <DeliveryNumber>231030016</DeliveryNumber>\n    <DeliveryTypeCode>OUT</DeliveryTypeCode>\n    <DeliverySubType>FACTORY_SHIPMENT</DeliverySubType>\n    <DeliveryStatus>SHIPPED</DeliveryStatus>\n    <OwnerCode>21_2373</OwnerCode>\n    <Operator>Попкова М.П.</Operator>\n  </hdr_DeliveryResponse>\n  <tbl_DeliveryResponse>\n    <ExternalCode>A2CC6D06-C770-4F42-AFA1-B39A984AE736</ExternalCode>\n    <DeliveryRequestCode>DAE29EEB-7B25-421F-81A5-692EF30C2CF1</DeliveryRequestCode>\n    <MaterialCode>1_40261</MaterialCode>\n    <Quantity>0.510000</Quantity>\n    <MaterialUnitCode>43_31236</MaterialUnitCode>\n    <MaterialBatchCode>181301</MaterialBatchCode>\n    <StockTypeCode>FREE</StockTypeCode>\n    <ENDDate>2024-09-26T00:00:00</ENDDate>\n  </tbl_DeliveryResponse>\n</DOCNUM>"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "Resource created successfully"
+              }
+            }
+          },
+          "406": {
+            "description": "",
+            "content": {
+              "text": {
+                "example": "Bad request / № error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

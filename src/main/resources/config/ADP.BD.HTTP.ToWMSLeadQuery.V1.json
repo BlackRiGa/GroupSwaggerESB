@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.BD.HTTP.ToWMSLeadQuery.V1",
+    "version": "1.0.0",
+    "description": "ADP.BD.HTTP.ToWMSLeadQuery.V1 API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/BD/ToWMSLeadQuery/V1": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string",
+                    "description": "Source of the report",
+                    "example": "1c_SRM"
+                  },
+                  "ReportReceiver": {
+                    "type": "string",
+                    "description": "Receiver of the report",
+                    "example": "wms_zip"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "description": "ID of the report",
+                    "example": "e895e175-5049-4db5-b3ff-7fa879e12a03"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date of the report",
+                    "example": "2023-10-06T10:45:01"
+                  },
+                  "StringConnect": {
+                    "type": "string",
+                    "description": "Connection string",
+                    "example": "Srvr=\\\"1c-app\\\";Ref=\\\"srm\\\";"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string",
+                          "description": "Type of the message"
+                        },
+                        "WmsReceiver": {
+                          "type": "string",
+                          "description": "WMS Receiver"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "description": "ID of the message"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "Date of the message"
+                        },
+                        "Mdmcode_sklad": {
+                          "type": "string",
+                          "description": "Mdmcode of the warehouse"
+                        },
+                        "Quality": {
+                          "type": "string",
+                          "description": "Quality"
+                        }
+                      }
+                    },
+                    "description": "Message"
+                  }
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": "{\n    \"ReportSource\": \"1c_SRM\",\n    \"ReportReceiver\": \"wms_zip\",\n    \"ReportID\": \"e895e175-5049-4db5-b3ff-7fa879e12a03\",\n    \"ReportDate\": \"2023-10-06T10:45:01\",\n    \"StringConnect\": \"Srvr=\\\"1c-app\\\";Ref=\\\"srm\\\";\",\n    \"Message\": [\n        {\n            \"MessageType\": \"WarehouseSummaryRequest\",\n            \"WmsReceiver\": \"wms_zip\",\n            \"MessageID\": \"db5123c8-641a-11ee-83d3-fa163e986fe3\",\n            \"Date\": \"2023-10-06T10:45:01\",\n            \"Mdmcode_sklad\": \"2664,2573,2818,2582,2607,2574,2571,2576,2810,2581,2569,2579,2568,2580,2570,2578,2780,2583,2565,2566,2567,2577,2460,2430,2114,2426,2427,2429,2115,2113,2428,2116,2563,2473,2111,2415,2584,2795,2572,2575,2867,2793,2535,2794,2431,2432,2112,2564,2110,3899,3905,3870,3099,3244,3900,3901,3907,3904,3949,3908,3815,3238,3903,3948,3906\",\n            \"Quality\": \"7\"\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><m:ExecWSResponse xmlns:m=\"http://www.efko.ru/efko1C/\"><m:return xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:nil=\"true\"/></m:ExecWSResponse></soap:Body></soap:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.AutoLock",
+    "version": "1.0.0",
+    "description": "AADP.HTTP.AutoLock API for swagger"
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/ESB/HTTP/AutoLock": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "IB_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "IB_ws": {
+                          "type": "string",
+                          "description": "IB_ws"
+                        },
+                        "ObjectType": {
+                          "type": "string",
+                          "description": "ObjectType"
+                        },
+                        "Version": {
+                          "type": "string",
+                          "description": "Version"
+                        },
+                        "UserListforBlock": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "GUID_task": {
+                                "type": "string",
+                                "description": "GUID_task"
+                              },
+                              "Domen": {
+                                "type": "string",
+                                "description": "Domen"
+                              },
+                              "Login": {
+                                "type": "string",
+                                "description": "Login"
+                              }
+                            },
+                            "required": [
+                              "GUID_task",
+                              "Domen",
+                              "Login"
+                            ],
+                            "description": "User List for Block Information"
+                          }
+                        }
+                      },
+                      "required": [
+                        "IB_ws",
+                        "ObjectType",
+                        "Version",
+                        "UserListforBlock"
+                      ],
+                      "description": "IB List Information"
+                    }
+                  }
+                },
+                "required": [
+                  "IB_list"
+                ],
+                "description": "Request Information"
+              },
+              "examples": {
+                "example": {
+                  "value": "{\"IB_list\":[{\"IB_ws\":\"alkkrctrade\",\"ObjectType\":\"IDM_BlockUser\",\"Version\":\"1\",\"UserListforBlock\":[{\"GUID_task\":\"f40a1fe0-1365-48d7-9d5f-b702d42f176b\",\"Domen\":\"efko\",\"Login\":\"a.abazarov\"}]}]}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<NS1:Response xmlns:NS1=\"http://www.efko.ru/efko1C/\">\n    <Header>\n        <ObjectType>IDM_BlockUser</ObjectType>\n        <Version>1</Version>\n        <Fields>\n            <Field type=\"string\">GUID_task</Field>\n            <Field type=\"string\">Domen</Field>\n            <Field type=\"string\">Login</Field>\n            <Field type=\"string\">FindStr</Field>\n            <Field type=\"string\">Result</Field>\n            <Field type=\"string\">Comment</Field>\n            <Field type=\"string\">UserID_1С</Field>\n        </Fields>\n    </Header>\n    <Body>\n        <Row>\n            <FieldValue>f40a1fe0-1365-48d7-9d5f-b702d42f176b</FieldValue>\n            <FieldValue>efko</FieldValue>\n            <FieldValue>a.abazarov</FieldValue>\n            <FieldValue>\\\\EFKO\\A.ABAZAROV</FieldValue>\n            <FieldValue>true</FieldValue>\n            <FieldValue>Блокировка пользователя выполнена</FieldValue>\n            <FieldValue>Абазаров А.П.   </FieldValue>\n        </Row>\n    </Body>\n</NS1:Response>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  }
+}

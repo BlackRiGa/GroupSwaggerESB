@@ -1,0 +1,253 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ADP.HTTP.WorkmaterialsToWSSd",
+    "version": "1.0.0",
+    "description": "ADP.HTTP.WorkmaterialsToWSSd API for swagger."
+  },
+  "servers": [
+    {
+      "url": "https://esb-dev.efko.ru",
+      "description": "Test Server"
+    },
+    {
+      "url": "https://esb.efko.ru",
+      "description": "Prod Server"
+    }
+  ],
+  "paths": {
+    "/WorkmaterialsToWSSd/post": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {},
+              "examples": {
+                "example1": {
+                  "value": "Входящий пакет не логируется(слишком большой). Смотри похожие обмены с WSS"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><FindObjectsResponse xmlns=\"http://tempuri.org/\"><FindObjectsResult><OperationResult>true</OperationResult><Items /></FindObjectsResult></FindObjectsResponse></soap:Body></soap:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/WorkmaterialsToWSSd/getStatus": {
+      "post": {
+        "summary": "Submit a report",
+        "requestBody": {
+          "description": "Report data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "Date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "TimeModified": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "ListID": {
+                          "type": "string"
+                        },
+                        "SourceSystem": {
+                          "type": "string"
+                        },
+                        "Fields": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "Date",
+                        "TimeModified",
+                        "ListID",
+                        "SourceSystem",
+                        "Fields"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n    \"ReportSource\": \"ERP\",\n    \"ReportReceiver\": \"WSSD\",\n    \"ReportID\": \"71b1f11a-f184-40cb-bbee-89bd5da6345d\",\n    \"ReportDate\": \"2023-10-27T15:59:46\",\n    \"StringConnect\": \"Srvr=\\\"AlkKubMasERP\\\";Ref=\\\"alkkubmaserp\\\";\",\n    \"Message\": [\n        {\n            \"MessageType\": \"Workmaterials\",\n            \"MessageID\": \"52a178af-2a34-4184-85c6-616d246ae5be\",\n            \"Date\": \"2023-10-27T15:57:39\",\n            \"TimeModified\": \"2023-10-27 12:38:10\",\n            \"ListID\": \"373\",\n            \"SourceSystem\": \"7\",\n            \"Fields\": [\n                \"ID\",\n                \"TimeModified\",\n                \"test\"\n            ]\n        }\n    ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<Status>OK</Status>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/WorkmaterialsToWSSd/chngStatus": {
+      "post": {
+        "summary": "Create a resource",
+        "requestBody": {
+          "description": "XML Request",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ReportSource": {
+                    "type": "string"
+                  },
+                  "ReportReceiver": {
+                    "type": "string"
+                  },
+                  "ReportID": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "ReportDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "StringConnect": {
+                    "type": "string"
+                  },
+                  "Message": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "MessageType": {
+                          "type": "string"
+                        },
+                        "MessageID": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "ListID": {
+                          "type": "string"
+                        },
+                        "ID_WSSD": {
+                          "type": "string"
+                        },
+                        "Решение": {
+                          "type": "string"
+                        },
+                        "Comment": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "MessageType",
+                        "MessageID",
+                        "ListID",
+                        "ID_WSSD",
+                        "Решение",
+                        "Comment"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "ReportSource",
+                  "ReportReceiver",
+                  "ReportID",
+                  "ReportDate",
+                  "StringConnect",
+                  "Message"
+                ]
+              },
+              "examples": {
+                "example1": {
+                  "value": "{\n  \"ReportSource\": \"ERP\",\n  \"ReportReceiver\": \"WSSD\",\n  \"ReportID\": \"475180e0-1bbb-4c76-97fa-b6bc310382c2\",\n  \"ReportDate\": \"2023-10-27T15:32:37\",\n  \"StringConnect\": \"Srvr=\\\"AlkKubMasERP\\\";Ref=\\\"alkkubmaserp\\\";\",\n  \"Message\": [\n    {\n      \"MessageType\": \"Workmaterials\",\n      \"MessageID\": \"f1cbdef2-1060-46a2-bee1-e918bf9f1f67\",\n      \"ListID\": \"373\",\n      \"ID_WSSD\": \"134555\",\n      \"Решение\": \"Аннулировать\",\n      \"Comment\": \"Аннулирование инициатором\"\n    }\n  ]\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Resource created",
+            "content": {
+              "text": {
+                "example": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><AcceptDocumentSolutionResponse xmlns=\"http://tempuri.org/\"><AcceptDocumentSolutionResult><OperationResult>true</OperationResult></AcceptDocumentSolutionResult></AcceptDocumentSolutionResponse></soap:Body></soap:Envelope>"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+  }
+}
